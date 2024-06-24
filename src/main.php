@@ -52,7 +52,7 @@ session_start();
         <a href="#about" class="hover:text-yellow-300">About</a>
         <a onclick="window.location.href='galery.php'; return false;" class="hover:text-yellow-300 cursor-pointer">Gallery</a>
         <a href="#administrators" class="hover:text-yellow-300">Administrators</a>
-        <a hr ef="#footer" class="hover:text-yellow-300  cursor-pointer">Contact</a>
+        <a href="#footer" class="hover:text-yellow-300  cursor-pointer">Contact</a>
         <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
           <a onclick="window.location.href='dashboard.php'; return false;" class="cursor-pointer md:text-1xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
         <?php } ?>
