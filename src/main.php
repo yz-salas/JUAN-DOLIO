@@ -62,8 +62,11 @@ session_start();
       <!-- "Log Out" Button -->
       <div class="hidden lg:flex items-center space-x-4 gap-5">
         <?php if (!isset($_SESSION["user_id"])) { ?>
-          <a onclick="window.location.href='SignUp.php'; return false;" class="flex cursor-pointer items-center p-2 rounded-lg dark:text-white group">
-            <span class="flex-1 ms-3 whitespace-nowrap text-xl hover:text-red-700">Sign In</span>
+          <a onclick="window.location.href='SignUp.php'; return false;" class="flex cursor-pointer items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group">
+            <svg class="flex-shrink-0 w-5 h-5 transition duration-75 group-hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap text-center">Sign In</span>
           </a>
         <?php } ?>
 
@@ -135,7 +138,7 @@ session_start();
   <main class="flex flex-col">
     <section id="about" class="flex flex-col gap-36 p-10 container-xxl mb-36 min-h-screen pt-20">
       <div class="w-full flex gap-10 flex-col justify-center items-center h-32">
-        <h1 class="text-4xl sm:text-3xl lg:text-4xl flex items-center justify-center p-10 text-center gap-3 flex-col w-full h-full text-white">
+        <h1 class="text-3xl sm:text-3xl lg:text-4xl flex items-center justify-center p-10 text-center gap-3 flex-col w-full h-full text-white">
           <span class="text-yellow-300">
             get to know me
           </span>
@@ -167,30 +170,33 @@ session_start();
     </section>
 
     <section id="administrators" class="flex flex-col sm:gap-20 items-center justify-center p-10 text-white mb-36 min-h-1/3">
-      <h2 class="text-center sm:text-1xl text-2xl font-bold mb-8 text-yellow-300 lg:text-3xl">WATER FRONT PROPERTY FOR SALE @ JUAN DOLIO BEACH, SAN PEDRO<br> 978-578-0278</h2>
+      <h2 class="text-center text-2xl font-bold mb-8 text-yellow-300 sm:text-3xl lg:text-4xl">
+        WATER FRONT PROPERTY FOR SALE @ JUAN DOLIO BEACH, SAN PEDRO<br> 978-578-0278
+      </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:flex sm:flex-col lg:flex-row">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
         <div class="flex flex-col justify-center bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl sm:text-4xl lg:text-[20px] font-semibold text-blue-700 mb-2">Fernando Pena</h3>
-          <p class="text-sm sm:text-2xl text-gray-600 lg:text-xl">(978)745-8848</p>
-          <p class="text-gray-700 my-4 sm:text-2xl lg:text-sm">Come and Invest in this piece of Paradise / Water View / Juan Dolio Beach</p>
-          <p class="text-gray-700 sm:text-2xl lg:text-sm">We speak French, Spanish, Portuguese, English, and Mandarin/Cantonese</p>
+          <h3 class="text-xl sm:text-2xl lg:text-xl font-semibold text-blue-700 mb-2">Fernando Pena</h3>
+          <p class="text-sm sm:text-base lg:text-xl text-gray-600">(978)745-8848</p>
+          <p class="text-gray-700 my-4 sm:text-base lg:text-sm">Come and Invest in this piece of Paradise / Water View / Juan Dolio Beach</p>
+          <p class="text-gray-700 sm:text-base lg:text-sm">We speak French, Spanish, Portuguese, English, and Mandarin/Cantonese</p>
         </div>
 
         <div class="flex flex-col justify-center bg-white p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl sm:text-4xl lg:text-xl font-semibold text-blue-700 mb-2 ">Near Juan Dolio Beach, San Pedro</h3>
-          <p class="text-sm text-gray-600 sm:text-2xl lg:text-xl">Autovia del Este # 1492</p>
-          <p class="text-gray-700 my-4 sm:text-2xl lg:text-sm">Financing Available / Local Bank and International Loans</p>
+          <h3 class="text-xl sm:text-2xl lg:text-xl font-semibold text-blue-700 mb-2">Near Juan Dolio Beach, San Pedro</h3>
+          <p class="text-sm sm:text-base lg:text-xl text-gray-600">Autovia del Este # 1492</p>
+          <p class="text-gray-700 my-4 sm:text-base lg:text-sm">Financing Available / Local Bank and International Loans</p>
         </div>
 
         <div class="flex flex-col justify-center bg-white p-6 rounded-lg shadow-lg">
-          <h3 class=" lg:text-xl sm:text-4xl font-semibold text-blue-700 mb-2">Chen Yanyan</h3>
-          <p class="text-sm text-gray-600 sm:text-2xl lg:text-xl">(978)745-8848</p>
-          <p class="text-gray-700 my-4 sm:text-2xl lg:text-sm">Come and Invest in this piece of Paradise / Water View / Juan Dolio Beach</p>
-          <p class="text-gray-700 sm:text-2xl lg:text-sm">Mandarin/Cantonese Spoken</p>
+          <h3 class="text-xl sm:text-2xl lg:text-xl font-semibold text-blue-700 mb-2">Chen Yanyan</h3>
+          <p class="text-sm sm:text-base lg:text-xl text-gray-600">(978)745-8848</p>
+          <p class="text-gray-700 my-4 sm:text-base lg:text-sm">Come and Invest in this piece of Paradise / Water View / Juan Dolio Beach</p>
+          <p class="text-gray-700 sm:text-base lg:text-sm">Mandarin/Cantonese Spoken</p>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer id="footer" class="bg-gray-900 text-white py-16">

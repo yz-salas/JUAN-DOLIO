@@ -79,7 +79,7 @@ if ($_SESSION["level"] != 1) {
                         </li>
                     </ul>
 
-                    <a href="cerrarseccion.php" class="flex items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group">
+                    <a onclick="window.location.href='cerrarseccion.php'; return false;" class="flex cursor-pointer items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                         </svg>
