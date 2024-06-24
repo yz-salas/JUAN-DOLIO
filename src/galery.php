@@ -5,10 +5,10 @@ session_start()
 <!DOCTYPE html>
 <html lang="en">
 
-<ph>
+<head>
   <title>DELFINESPARK.COM</title>
   <?php include("linking.php") ?>
-</ph>
+</head>
 
 <body class="flex flex-col">
 
@@ -41,7 +41,7 @@ session_start()
 
       <!-- Navbar Links (hidden on small screens, shown on large screens) -->
       <div id="navbar-links" class="hidden lg:flex items-center space-x-4 gap-5">
-        <a href="index.php" class="hover:text-yellow-300">Home</a>
+        <a href="galery.php" onclick="window.location.href='main.php'; return false;" class="hover:text-yellow-300 cursor-pointer">Home</a>
         <a href="#footer" class="hover:text-yellow-300">Contact</a>
         <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
           <a href="dashboard.php" class="md:text-1xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
@@ -51,13 +51,10 @@ session_start()
 
     <!-- Responsive Menu (hidden by default, shown when toggled) -->
     <div id="responsive-menu" class="lg:hidden hidden sm:w-full p-10">
-      <a href="#header" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Home</a>
-      <a href="#about" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">About</a>
-      <a href="./src/galery.php" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Gallery</a>
-      <a href="#administrators" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Administrators</a>
+      <a href="main.php" class="md:text-2xl block px-4 py-2 hover:bg-gray-700 cursor-pointer">Home</a>
       <a href="#footer" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Contact</a>
       <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
-        <a href="./src/dashboard.php" class="md:text-2xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
+        <a onclick="window.location.href='dashboard.php'; return false;" class="md:text-2xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
       <?php } ?>
     </div>
   </nav>
@@ -82,7 +79,7 @@ session_start()
         if (mysqli_num_rows($result) < 1) {
         ?>
 
-          <h3 id="aviso" class="text-1xl">No hay imágenes disponibles.</h3>
+          <h3 id="aviso" class="text-1xl">we don't any images available.</h3>
 
           <?php
         } else {
@@ -93,8 +90,10 @@ session_start()
             <div class=" bg-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl transform transition duration-300 ease-in-out">
               <img src="<?= $url ?>" alt="Imagen <?= $row['ID'] ?>" class="object-cover w-full h-48 rounded-t-lg">
               <div class="p-4">
-                <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white mb-2"><?= $row["Name"] ?></h5>
-                <p class="text-gray-700 dark:text-gray-400 mb-4"><?= $row["Description"] ?></p>
+                <!--
+            <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white mb-2"><?= $row["Name"] ?></h5>
+            -->
+                <p class="text-gray-700 dark:text-gray-400 mb-4 text-xl"><?= $row["Description"] ?></p>
               </div>
             </div>
         <?php

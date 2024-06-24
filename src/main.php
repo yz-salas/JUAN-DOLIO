@@ -1,6 +1,8 @@
 <?php
-include("session_check.php");
+session_start();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +32,10 @@ include("session_check.php");
   </script>
 
 
-  <nav class="bg-blue-800 fixed z-10 text-white p-4 w-full sm:flex sm:justify-center sm:items-center sm:flex-col">
+  <nav class="bg-blue-800 fixed z-10 text-white p-4 w-full sm:flex sm:justify-center sm:items-center sm:flex-col sm:min-h-12 lg:min-h-16">
     <div class="container mx-auto sm:flex sm:items-center flex justify-between items-center">
       <!-- Logo -->
-      <div class="text-lg font-bold text-yellow-300 sm:text-2xl">JUAN DOLIO</div>
+      <div class="text-lg font-bold text-yellow-300 sm:text-1xl lg:text-2xl">JUAN DOLIO</div>
 
       <!-- Menu Toggle (hidden on large screens) -->
       <div class="lg:hidden">
@@ -48,72 +50,92 @@ include("session_check.php");
       <div id="navbar-links" class="hidden lg:flex items-center space-x-4 gap-5">
         <a href="#header" class="hover:text-yellow-300">Home</a>
         <a href="#about" class="hover:text-yellow-300">About</a>
-        <a href="galery.php" class="hover:text-yellow-300">Gallery</a>
+        <a onclick="window.location.href='galery.php'; return false;" class="hover:text-yellow-300 cursor-pointer">Gallery</a>
         <a href="#administrators" class="hover:text-yellow-300">Administrators</a>
-        <a href="#footer" class="hover:text-yellow-300">Contact</a>
+        <a hr ef="#footer" class="hover:text-yellow-300">Contact</a>
         <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
-          <a href="dashboard.php" class="md:text-1xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
+          <a onclick="window.location.href='dashboard.php'; return false;" class="cursor-pointer md:text-1xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
         <?php } ?>
       </div>
 
+
       <!-- "Log Out" Button -->
       <div class="hidden lg:flex items-center space-x-4 gap-5">
-        <a href="cerrarseccion.php" class="flex items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group">
-          <svg class="flex-shrink-0 w-5 h-5 text-whate transition duration-75 group-hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
-          </svg>
-          <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
-        </a>
+        <?php if (!isset($_SESSION["user_id"])) { ?>
+          <a onclick="window.location.href='SignUp.php'; return false;" class="flex cursor-pointer items-center p-2 rounded-lg dark:text-white group">
+            <span class="flex-1 ms-3 whitespace-nowrap text-xl hover:text-red-700">Sign In</span>
+          </a>
+        <?php } ?>
+
+        <?php if (isset($_SESSION["user_id"])) { ?>
+          <a onclick="window.location.href='cerrarseccion.php'; return false;" class="flex items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group cursor-pointer">
+            <svg class="flex-shrink-0 w-5 h-5 text-whate transition duration-75 group-hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+            </svg>
+            <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
+          </a>
+        <?php } ?>
+
 
       </div>
     </div>
 
     <!-- Responsive Menu (hidden by default, shown when toggled) -->
-    <div id="responsive-menu" class="lg:hidden hidden sm:w-full p-10">
+    <div id="responsive-menu" class="lg:hidden hidden sm:w-full p-10 gap-4">
       <a href="#header" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Home</a>
       <a href="#about" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">About</a>
-      <a href="galery.php" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Gallery</a>
+      <a onclick="window.location.href='galery.php'; return false;" class="md:text-2xl block px-4 py-2 hover:bg-gray-700 cursor-pointer">Gallery</a>
       <a href="#administrators" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Administrators</a>
       <a href="#footer" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Contact</a>
-      <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
-        <a href="addimg.php" class="md:text-2xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
+      <?php if (!isset($_SESSION["user_id"])) { ?>
+        <a onclick="window.location.href='login.php'; return false;" class="flex items-center p-2 rounded-lg dark:text-white group cursor-pointer">
+          <span class=" flex-1 ms-3 whitespace-nowrap text-xl hover:text-red-700">Sign In</span>
+        </a>
       <?php } ?>
 
-      <!-- "Log Out" Button in the responsive menu -->
+      <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
+        <a onclick="window.location.href='dashboard.php'; return false;" class="md:text-2xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400 cursor-pointer mt-10">You are an Administrator</a>
+      <?php } ?>
+
+
+      <?php if (isset($_SESSION["user_id"])) { ?>
+        <a onclick="window.location.href='cerrarseccion.php'; return false;" class="flex items-center p-2 rounded-lg dark:text-white text-red-500 hover:text-red-600 group cursor-pointer text-xl mt-5">
+          <svg class="flex-shrink-0 w-5 h-5 text-whate transition duration-75 group-hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
+        </a>
+      <?php } ?>
+      <!-- "Log Out" Button in the responsive menu 
       <div class="md:text-2xl block px-4 py-2 hover:bg-gray-700">
         <a href="cerrarseccion.php" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Log Out</a>
       </div>
+      -->
     </div>
   </nav>
 
-
-
-  <header id="header" class="flex justify-center items-center mb-36 h-screen bg-gradient-to-r from-blue-500 to-blue-800 text-white w-full">
-    <div class="container mx-auto flex flex-col justify-center h-full items-center">
-      <div class="h-72 sm:h-[30vh] lg:h-screen flex lg:flex-row gap-5 w-full items-center sm:flex-col-reverse">
-        <div class="flex flex-col items-center md:items-start px-5 text-center md:text-left">
-          <h1 class="text-4xl lg:text-6xl lg:text-start font-bold mb-4 sm:text-7xl sm:w-full sm:text-center">
-            <span class="block text-yellow-300">
-              JUAN DOLIO
-            </span>
-            <span>
-              WATER VIEW LAND FOR SALE
-            </span>
-          </h1>
-        </div>
-        <div class="w-full md:w-1/2 flex justify-center">
-          <img class="w-2/3 sm:w-full lg:w-2/3 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300" src="../assets/images/cartoon-house-sale-vector-illustration-53745307" alt="House for Sale">
-        </div>
+  <header id="header" class="flex justify-center items-center mb-36 min-h-screen bg-gradient-to-r from-blue-500 to-blue-800 text-white w-full">
+    <div class="container mx-auto flex flex-col justify-center h-full items-center md:flex-col lg:flex-row gap-5 w-full sm:flex-col">
+      <div class="flex flex-col items-center md:items-start px-5 text-center md:text-left">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl lg:text-start font-bold mb-4 sm:w-full sm:text-center">
+          <span class="block text-yellow-300">
+            JUAN DOLIO
+          </span>
+          <span>
+            WATER VIEW LAND FOR SALE
+          </span>
+        </h1>
+      </div>
+      <div class="md:w-1/2 lg:w-1/2 flex justify-center">
+        <img class="w-2/3 lg:w-1/2 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300" src="../assets/images/cartoon-house-sale-vector-illustration-53745307" alt="House for Sale">
       </div>
     </div>
   </header>
 
-
-
   <main class="flex flex-col">
     <section id="about" class="flex flex-col gap-36 p-10 container-xxl mb-36 min-h-screen pt-20">
       <div class="w-full flex gap-10 flex-col justify-center items-center h-32">
-        <h1 class="text-5xl sm:text-7xl lg:text-5xl flex items-center justify-center p-20 text-center gap-3 flex-col w-full h-full text-white">
+        <h1 class="text-4xl sm:text-3xl lg:text-4xl flex items-center justify-center p-10 text-center gap-3 flex-col w-full h-full text-white">
           <span class="text-yellow-300">
             get to know me
           </span>
@@ -125,17 +147,17 @@ include("session_check.php");
 
       <div class="container-xxl">
         <div id="cont-text">
-          <div class="flex items-center justify-center gap-10 sm:flex-col">
+          <div class="flex items-center justify-center gap-10 sm:flex-col lg:flex-row">
 
-            <div class="flex flex-col sm:flex-col lg:flex-row sm:gap-20 items-center">
-              <div class="sm:w-full lg:w-[50%]">
+            <div class="flex flex-col sm:flex-col lg:flex-row sm:gap-10 items-center">
+              <div class="sm:w-full lg:w-1/2">
                 <img src="../assets/images/blog-3-720x480" alt="About Us Image" class="w-full h-auto rounded-lg shadow-md">
               </div>
-              <div class="sm:w-[80%] lg:w-[50%] lg:justify-start lg:items-start sm:gap-4 mt-8 md:mt-0 sm:flex flex-col sm:justify-center sm:items-center lg:p-[10px]">
-                <h2 class="text-3xl sm:text-6xl lg:text-[30px] font-bold text-yellow-300 ">About Us</h2>
-                <p class="mt-4 sm:text-3xl xl:text-[15px] text-gray-600 leading-relaxed lg:text-start lg:text-xl sm:text-center">Welcome to [Your Real Estate Company], where dreams find a home. With a dedicated team of professionals, we provide personalized service to help you find the perfect property. Whether you are looking for a cozy apartment, a spacious house, or an investment opportunity, we are here to assist you every step of the way.</p>
-                <p class="mt-4 sm:text-3xl xl:text-[15px] text-gray-600 leading-relaxed lg:text-start lg:text-xl sm:text-center">Our mission is to make the process of buying, selling, or renting properties as smooth and stress-free as possible. With years of experience in the real estate industry, we have built a reputation for honesty, integrity, and excellence. Let us help you turn your real estate dreams into reality.</p>
-                <a href="contact.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:text-yellow-300 transition duration-300 sm:text-4xl lg:text-sm">Contact Us</a>
+              <div class="sm:w-full lg:w-1/2 flex flex-col items-center lg:items-start mt-8 md:mt-0 p-5 lg:p-0">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-300">About Us</h2>
+                <p class="mt-4 text-base sm:text-xl lg:text-lg text-gray-600 leading-relaxed text-center lg:text-left">Welcome to [Your Real Estate Company], where dreams find a home. With a dedicated team of professionals, we provide personalized service to help you find the perfect property. Whether you are looking for a cozy apartment, a spacious house, or an investment opportunity, we are here to assist you every step of the way.</p>
+                <p class="mt-4 text-base sm:text-xl lg:text-lg text-gray-600 leading-relaxed text-center lg:text-left">Our mission is to make the process of buying, selling, or renting properties as smooth and stress-free as possible. With years of experience in the real estate industry, we have built a reputation for honesty, integrity, and excellence. Let us help you turn your real estate dreams into reality.</p>
+                <a href="contact.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:text-yellow-300 transition duration-300 sm:text-lg lg:text-base">Contact Us</a>
               </div>
             </div>
 
@@ -145,7 +167,7 @@ include("session_check.php");
     </section>
 
     <section id="administrators" class="flex flex-col sm:gap-20 items-center justify-center p-10 text-white mb-36 min-h-1/3">
-      <h2 class="text-center sm:text-5xl text-3xl font-bold mb-8 text-yellow-300 lg:text-4xl">WATER FRONT PROPERTY FOR SALE @ JUAN DOLIO BEACH, SAN PEDRO<br> 978-578-0278</h2>
+      <h2 class="text-center sm:text-1xl text-2xl font-bold mb-8 text-yellow-300 lg:text-3xl">WATER FRONT PROPERTY FOR SALE @ JUAN DOLIO BEACH, SAN PEDRO<br> 978-578-0278</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:flex sm:flex-col lg:flex-row">
         <div class="flex flex-col justify-center bg-white p-6 rounded-lg shadow-lg">

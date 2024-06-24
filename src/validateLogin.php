@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['level'] = $user['level'];
 
             // Redirige al usuario validado a la página principal
-            header("Location: index.php");
+            header("Location: main.php");
             exit();
         } else {
             $mensaje = "Contraseña incorrecta";

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['email'] = $user['email'];
 
         //redirijo al usuario validado a la pagina proncipal
-        header("Location: index.php");
+        header("Location: main.php");
         exit();
     } else {
         echo  "Error: " . $stmt . "<br>" . mysqli_error($conn);
