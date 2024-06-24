@@ -52,7 +52,7 @@ session_start();
         <a href="#about" class="hover:text-yellow-300">About</a>
         <a onclick="window.location.href='galery.php'; return false;" class="hover:text-yellow-300 cursor-pointer">Gallery</a>
         <a href="#administrators" class="hover:text-yellow-300">Administrators</a>
-        <a hr ef="#footer" class="hover:text-yellow-300">Contact</a>
+        <a hr ef="#footer" class="hover:text-yellow-300  cursor-pointer">Contact</a>
         <?php if (isset($_SESSION['level']) && $_SESSION['level'] == 1) { ?>
           <a onclick="window.location.href='dashboard.php'; return false;" class="cursor-pointer md:text-1xl block px-4 py-2 bg-yellow-300 text-blue-800 rounded-lg hover:bg-yellow-400">You are an Administrator</a>
         <?php } ?>
@@ -86,10 +86,10 @@ session_start();
       <a href="#about" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">About</a>
       <a onclick="window.location.href='galery.php'; return false;" class="md:text-2xl block px-4 py-2 hover:bg-gray-700 cursor-pointer">Gallery</a>
       <a href="#administrators" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Administrators</a>
-      <a href="#footer" class="md:text-2xl block px-4 py-2 hover:bg-gray-700">Contact</a>
+      <a href="#footer" class="md:text-2xl block px-4 py-2 hover:bg-gray-700 cursor-pointer">Contact</a>
       <?php if (!isset($_SESSION["user_id"])) { ?>
         <a onclick="window.location.href='login.php'; return false;" class="flex items-center p-2 rounded-lg dark:text-white group cursor-pointer">
-          <span class=" flex-1 ms-3 whitespace-nowrap text-xl hover:text-red-700">Sign In</span>
+          <span class="flex-1 ms-3 whitespace-nowrap text-xl hover:text-red-700">Sign In</span>
         </a>
       <?php } ?>
 
